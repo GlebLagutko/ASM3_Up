@@ -8,6 +8,7 @@ bool isPoly = false;
 extern "C"
 {
 	int __cdecl IsPoly();
+
 }
 
 
