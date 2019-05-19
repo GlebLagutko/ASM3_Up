@@ -11,13 +11,13 @@ int main()
 	int N, ind;
 	wcin >> N >> ind;
 	ind--;
-	int** a = new int*[N];
+	int** matrix = new int*[N];
 	for (int i = 0; i < N; i++)
 	{
-		a[i] = new int[N];
+		matrix[i] = new int[N];
 		for (int j = 0; j < N; j++)
 		{
-			a[i][j] = rand() % 10;
+			matrix[i][j] = rand() % 10;
 		}
 	}
 
@@ -26,19 +26,19 @@ int main()
 	{
 		for (int j = 0; j < N; j++)
 		{
-			wcout << setw(4) << a[i][j] << ' ';
+			wcout << setw(4) << matrix[i][j] << ' ';
 		}
 		wcout << endl;
 	}
 
-	Function1(N, a, ind);
+	Function1(N, matrix, ind);
 
 	wcout << endl;
 	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < N; j++)
 		{
-			wcout << setw(5) << a[i][j] << ' ';
+			wcout << setw(5) << matrix[i][j] << ' ';
 		}
 		wcout << endl;
 	}
