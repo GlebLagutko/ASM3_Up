@@ -4,29 +4,37 @@
 
 using namespace std;
 
-extern "C"	int __fastcall Function1(unsigned int, unsigned __int16*, unsigned __int16*);
+extern "C"
+{
+	int __fastcall Function1(unsigned int, int*);
+	int __fastcall FindMax(unsigned int, int*);
+
+}
 
 int main()
 {
-	unsigned __int16 a_size;
+	unsigned int a_size;
 	cin >> a_size;
-	unsigned __int16* a = new unsigned __int16[a_size];
-	unsigned __int16* b = new unsigned __int16[1 << 16];
+	int* b = new int[a_size];
+	 
 	for (int i = 0; i < a_size; i++)
 	{
-		a[i] = rand() % 1500;
+		b[i] = rand() % 1000 ;
 	}
+
 
 	cout << endl;
 	for (int i = 0; i < a_size; i++)
 	{
-		cout << setw(6) << a[i] << ' ';
+		cout << setw(6) << b[i] << ' ';
 	}
 
 	int result;
-	result = Function1(a_size, a, b);
+	result = Function1(a_size, b);
+	auto result1 = FindMax(a_size, b);
 
-	cout << endl << result << endl;
+	cout << endl << "Count : " << result << endl;
+	cout << "Max element : " << result1 << endl;
 	system("pause");
 	return 0;
 }

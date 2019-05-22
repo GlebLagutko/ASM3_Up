@@ -1,43 +1,41 @@
 .686
-PUBLIC @Function1@12
+PUBLIC @Function1@8
+PUBLIC @FindMax@8
 .model flat
 .stack
 .code
 
-	@Function1@12 proc	
+	@Function1@8 proc	
 	
-	push	ebp
-	mov		ebp,	esp
-	mov		esi,	[ebp + 8]
-	mov		edi,	ecx
-
-	mov		ecx,	1
-	shl		ecx,	16
-	cycle1:
-		mov		word ptr[esi + 2 * ecx - 2], 0
-	loop cycle1
-
-	mov		eax,	0
-	mov		ecx,	edi
+	mov		eax,	1
+	mov		ebx,	dword ptr[edx + 4 * ecx - 4]
 	cycle2:
-		mov		ax,	word ptr[edx + 2 * ecx - 2]
-		inc		word ptr[esi + 2 * eax]
+		mov		edi,	dword ptr[edx + 4 * ecx - 4]
+		cmp    ebx,edi
+		je mark1
+		inc eax
+		mark1:
 	loop cycle2
+	ret
 
+
+	@Function1@8 endp
+
+	@FindMax@8 proc	
+	
 	mov		eax,	0
-	mov		ecx,	1
-	shl		ecx,	16
-	cycle3:
-		mov		bx,	word ptr[esi + 2 * ecx - 2]
-		test	bx,	bx
-		jz		no_instances
-		inc		eax
-		no_instances:
-	loop cycle3
+	mov		ebx,	dword ptr[edx + 4 * ecx - 4]
+	cycle2:
+		mov		edi,	dword ptr[edx + 4 * ecx - 4]
+		cmp    ebx,edi
+		JGE mark1
+		mov ebx,edi
+		mark1:
+	loop cycle2
+	mov eax,ebx
+	ret
 
-	pop		ebp
-	ret 4
 
-	@Function1@12 endp
+	@FindMax@8 endp
 
 end

@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <ctime>
 
 using namespace std;
 
@@ -9,8 +10,10 @@ extern "C"	void __fastcall Function1(int, int**, int);
 int main()
 {
 	int N, ind;
+	wcout << L"Input N and index : ";
 	wcin >> N >> ind;
 	ind--;
+	srand(time(NULL));
 	int** matrix = new int*[N];
 	for (int i = 0; i < N; i++)
 	{
