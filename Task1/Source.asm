@@ -14,6 +14,7 @@ PUBLIC @Function1@12
 	cycle:
 		mov		eax,	dword ptr[ebx + 4*ecx - 4]
 		mov		edi,	dword ptr[edx + 4*ecx - 4]
+
 		xchg	eax,	dword ptr[edi + 4 * esi]
 		mov		dword ptr[ebx + 4*ecx - 4],	eax
 	loop cycle
